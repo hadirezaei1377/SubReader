@@ -1,0 +1,1 @@
+an application for read subtitles and extracting unknown words.
