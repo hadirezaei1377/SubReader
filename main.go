@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -32,6 +33,9 @@ func Process(filename string) {
 
 	// divide files to lines
 	lines := strings.Split(content, "\n")
+	words := ExtractWords(lines)
+	words_map := MakeWordsMap(words)
+	fmt.Println(words_map)
 
 }
 
@@ -57,4 +61,16 @@ func ExtractWords(lines []string) []string {
 		words = append(words, new_words...)
 	}
 	return words
+}
+
+func MakeWordsMap(words []string) map[string]int {
+	// input is an array of strings and output is a map of word and an int that shows each word how many time repeated
+	words_map := make(map[string]int, 0)
+	for _, word := range words {
+		if _, ok := words_map[word]; !ok {
+			words_map[word] = 0
+		}
+		word_map[word]++
+	}
+	return words_map
 }
